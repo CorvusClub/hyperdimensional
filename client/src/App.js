@@ -3,6 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    users: [
+      {name: "Tom", username: "thristhart"},
+    ],
+    activities: [
+      {name: "Dota 2", people: ["thristhart"]},
+    ],
+  };
+
+  componentDidMount() {
+    this.hitApi();
+  }
+
+  hitApi = async () => {
+    const response = await fetch('/api/hello');
+    const data = await response.json();
+
+    console.log(data);
+  };
+
   render() {
     return (
       <div className="App">
@@ -17,7 +37,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Learn React?
           </a>
         </header>
       </div>
